@@ -5,8 +5,7 @@ var Alexa = require('alexa-sdk');
 
 var handlers = {
     'NewSession': function() {
-        this.emit(':tell', 'Lets get started. I\'ll say a series of cards and you tell me what the card count is using the REKO method.');
-        this.emit(':ask', '7, 3, Jack. What\'s the current count?'); // TODO
+        this.emit(':ask', 'Lets get started. I\'ll say a series of cards and you tell me what the card count is using the REKO method. 7, 3, Jack. What\'s the current count?');
     },
     'AMAZON.StopIntent': function() {
         this.emit(':tell', 'Goodbye!');  
