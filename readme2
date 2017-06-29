@@ -1,0 +1,20 @@
+start
+*draw x cards*
+what is the count?
+answer
+loop
+
+
+
+TODO
+- make count a running total (re-ask and perserve the count, decrement by 1 for now every guess)
+- adjust by a random number
+- make deck and draw a card every turn (make alexa say the card value or name (ie, jack), not the suit)
+- shuffle the deck when low on cards
+- randomize how many cards are drawn every turn
+- add help prompt that explains card counting using the RSKO method
+- add minus intent and utterances
+- add rest of negative utterances
+- script to pack src into a zip file
+- make echo say negative instead of minus (do negative check, then flip positive and add 'negative')
+
