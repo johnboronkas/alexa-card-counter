@@ -6,6 +6,7 @@ var Alexa = require('alexa-sdk');
 var handlers =  {
     'LaunchRequest': function() {
         // var msg = 'Lets get started! I\'ll say a series of cards and you tell me what the card count is using the REKO method. 7, 3, Jack. What\'s the current count?';
+        this.attributes['count'] = -27; // 8 decks
         this.emit(':ask', 'Lets get started! What\'s the count?');
     },
     'AMAZON.StopIntent': function() {
@@ -25,11 +26,19 @@ var handlers =  {
     },
     'AnswerIntent': function () {
         var answer = parseInt(this.event.request.intent.slots.number.value);
-        console.log(answer);
-        if (answer == 1) {
-            this.emit(':tell', 'You are correct!');
+        if (answer == this.attributes['count']) {
+            this.emit(':tell', 'You are correct! The count is currently ' + this.attributes['count']);
         } else {
-            this.emit(':tell', 'Incorrect, the count is currently 1.');
+            this.emit(':tell', 'Incorrect, you said ' + answer + ', but the count is currently ' + this.attributes['count']);
+        }
+    },
+    'NegativeAnswerIntent': function () {
+        var answer = parseInt(this.event.request.intent.slots.negativenumber.value);
+        answer = answer * -1;
+        if (answer == this.attributes['count']) {
+            this.emit(':tell', 'You are correct! The count is currently ' + this.attributes['count']);
+        } else {
+            this.emit(':tell', 'Incorrect, you said ' + answer + ', but the count is currently ' + this.attributes['count']);
         }
     },
 };
